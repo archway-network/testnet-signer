@@ -5,4 +5,5 @@ type ID struct {
 	GithubHandle   string `json:"github_handle"`
 	EmailAddress   string `json:"email_address"`
 	AccountAddress string `json:"account_address"`
+	PubKey         string `json:"pub_key"`
 }

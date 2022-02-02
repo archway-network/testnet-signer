@@ -72,6 +72,7 @@ var signIDCmd = &cobra.Command{
 			GithubHandle:   githubHandle,
 			EmailAddress:   emailAddress,
 			AccountAddress: accAddress,
+			PubKey:         keyInfo.GetPubKey().String(),
 		}
 
 		marshalledBytes, err := json.Marshal(kycID)
@@ -85,7 +86,6 @@ var signIDCmd = &cobra.Command{
 		container := types.Container{
 			ID:        kycID,
 			Signature: signatureStr,
-			PubKey:    keyInfo.GetPubKey().String(),
 		}
 
 		marshalledContainer, err := json.MarshalIndent(container, "", "  ")

@@ -9,7 +9,6 @@ import (
 type Container struct {
 	ID        ID     `json:"id"`
 	Signature string `json:"signature"`
-	PubKey    string `json:"pub_key"`
 }
 
 func (c Container) VerifySubmission(kr keyring.Keyring, keyName string) (bool, error) {
