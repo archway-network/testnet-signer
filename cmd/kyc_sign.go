@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/archway-network/augusta-testnet-signer/types"
 	cosmosFlag "github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/codec/legacy"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
@@ -44,6 +45,7 @@ var signIDCmd = &cobra.Command{
 
 		accAddress := sdk.AccAddress(keyInfo.GetPubKey().Address()).String()
 		fmt.Println("Your Augusta incentivized testnet address is: ", accAddress)
+		fmt.Println("Public key is:", keyInfo.GetPubKey().String())
 
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Printf("Please Enter your Full Legal Name:")
@@ -67,12 +69,17 @@ var signIDCmd = &cobra.Command{
 		}
 		emailAddress = strings.TrimSpace(emailAddress)
 
+		aminoSerialized, err := legacy.Cdc.Marshal(keyInfo.GetPubKey())
+		if err != nil {
+			return err
+		}
+
 		kycID := types.ID{
 			FullLegalName:  fullLegalName,
 			GithubHandle:   githubHandle,
 			EmailAddress:   emailAddress,
 			AccountAddress: accAddress,
-			PubKey:         keyInfo.GetPubKey().String(),
+			PubKey:         base64.StdEncoding.EncodeToString(aminoSerialized),
 		}
 
 		marshalledBytes, err := json.Marshal(kycID)

@@ -3,7 +3,8 @@ package types
 import (
 	"encoding/base64"
 	"encoding/json"
-	"github.com/cosmos/cosmos-sdk/crypto/keyring"
+	"github.com/cosmos/cosmos-sdk/codec/legacy"
+	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 )
 
 type Container struct {
@@ -11,13 +12,19 @@ type Container struct {
 	Signature string `json:"signature"`
 }
 
-func (c Container) VerifySubmission(kr keyring.Keyring, keyName string) (bool, error) {
+func (c Container) VerifySubmission() (bool, error) {
 	marshalledId, err := json.Marshal(c.ID)
 	if err != nil {
 		return false, err
 	}
 
-	testKey, err := kr.Key(keyName)
+	pubkeyBytes, err := base64.StdEncoding.DecodeString(c.ID.PubKey)
+	if err != nil {
+		return false, err
+	}
+
+	var pubkey cryptotypes.PubKey
+	err = legacy.Cdc.Unmarshal(pubkeyBytes, &pubkey)
 	if err != nil {
 		return false, err
 	}
@@ -27,5 +34,5 @@ func (c Container) VerifySubmission(kr keyring.Keyring, keyName string) (bool, e
 		return false, err
 	}
 
-	return testKey.GetPubKey().VerifySignature(marshalledId, sigBytes), nil
+	return pubkey.VerifySignature(marshalledId, sigBytes), nil
 }
