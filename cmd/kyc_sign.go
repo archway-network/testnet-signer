@@ -2,12 +2,10 @@ package cmd
 
 import (
 	"bufio"
-	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"github.com/archway-network/augusta-testnet-signer/types"
 	cosmosFlag "github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/cosmos/cosmos-sdk/codec/legacy"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
@@ -38,14 +36,10 @@ var signIDCmd = &cobra.Command{
 		}
 
 		keyName := args[0]
-		keyInfo, err := kr.Key(keyName)
+		_, err = kr.Key(keyName)
 		if err != nil {
 			return err
 		}
-
-		accAddress := sdk.AccAddress(keyInfo.GetPubKey().Address()).String()
-		fmt.Println("Your Augusta incentivized testnet address is: ", accAddress)
-		fmt.Println("Public key is:", keyInfo.GetPubKey().String())
 
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Printf("Please Enter your Full Legal Name:")
@@ -69,31 +63,13 @@ var signIDCmd = &cobra.Command{
 		}
 		emailAddress = strings.TrimSpace(emailAddress)
 
-		aminoSerialized, err := legacy.Cdc.Marshal(keyInfo.GetPubKey())
+		container, err := types.CreateContainer(fullLegalName, githubHandle, emailAddress, keyName, kr)
 		if err != nil {
 			return err
 		}
 
-		kycID := types.ID{
-			FullLegalName:  fullLegalName,
-			GithubHandle:   githubHandle,
-			EmailAddress:   emailAddress,
-			AccountAddress: accAddress,
-			PubKey:         base64.StdEncoding.EncodeToString(aminoSerialized),
-		}
-
-		marshalledBytes, err := json.Marshal(kycID)
-		signature, _, err := kr.Sign(keyName, marshalledBytes)
-		if err != nil {
-			return err
-		}
-
-		signatureStr := base64.StdEncoding.EncodeToString(signature)
-
-		container := types.Container{
-			ID:        kycID,
-			Signature: signatureStr,
-		}
+		fmt.Println("Your Augusta incentivized testnet address is: ", container.ID.AccountAddress)
+		fmt.Println("Amino encoded Public key is:", container.ID.PubKey)
 
 		marshalledContainer, err := json.MarshalIndent(container, "", "  ")
 		if err != nil {
