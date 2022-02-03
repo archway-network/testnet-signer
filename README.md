@@ -1,5 +1,5 @@
 # Augusta testnet signer utility
-This utility enables anybody who wishes to participate in augusta incentivized testnet, generate a id json with signature
+This utility enables anybody who wishes to participate in challenges involving sending tx on the testnet, generate a id json with signature
 that proves ownership of a key used to submit tx on blockchain.
 
 # How it works? 
@@ -9,7 +9,7 @@ that proves ownership of a key used to submit tx on blockchain.
 skip this step.
 
 ### Description
-Adds a new key to the keystore
+Adds a new key to the keystore. This command is compatible with the cosmos-sdk key management functionality.
 
 ### Command
 ```shell
@@ -19,7 +19,7 @@ augusta-testnet-signer keys add <key-name>
 ## Generate a signed id json
 
 ### Description
-Generates a signed id message that we will need to submit
+Generates a signed id message that we will need to submit in the form, after asking series of questions. Please make sure to fill the details correctly.
 
 ```shell
 % augusta-testnet-signer sign_id my-key --keyring-backend test
