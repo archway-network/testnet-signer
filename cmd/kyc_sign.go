@@ -9,6 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
+	"net/mail"
 	"os"
 	"strings"
 )
@@ -48,6 +49,9 @@ var signIDCmd = &cobra.Command{
 			return err
 		}
 		fullLegalName = strings.TrimSpace(fullLegalName)
+		if len(fullLegalName) < 3 || len(fullLegalName) > 512 {
+			return fmt.Errorf("full legal name need to be between 3 and 256 letter")
+		}
 
 		fmt.Printf("Please enter your github handle:")
 		githubHandle, err := reader.ReadString('\n')
@@ -55,6 +59,12 @@ var signIDCmd = &cobra.Command{
 			return err
 		}
 		githubHandle = strings.TrimSpace(githubHandle)
+		if strings.ContainsAny(githubHandle, " \t\n\r") {
+			return fmt.Errorf("github handle cannot contain whitespace character")
+		}
+		if len(githubHandle) < 1 || len(githubHandle) > 39 {
+			return fmt.Errorf("github handle need to be between 1 and 38 letter")
+		}
 
 		fmt.Printf("Please enter your email address (Use same email address, you would use in kyc form):")
 		emailAddress, err := reader.ReadString('\n')
@@ -62,6 +72,10 @@ var signIDCmd = &cobra.Command{
 			return err
 		}
 		emailAddress = strings.TrimSpace(emailAddress)
+		_, err = mail.ParseAddress(emailAddress)
+		if err != nil {
+			return err
+		}
 
 		container, err := types.CreateContainer(fullLegalName, githubHandle, emailAddress, keyName, kr)
 		if err != nil {
