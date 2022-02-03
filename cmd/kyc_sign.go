@@ -68,6 +68,14 @@ var signIDCmd = &cobra.Command{
 			return err
 		}
 
+		verified, err := container.VerifySubmission()
+		if err != nil {
+			return fmt.Errorf("error while verifying id submission, err: %v", err)
+		}
+		if !verified {
+			return fmt.Errorf("signature verification failed. This may be due to bug in the program")
+		}
+
 		fmt.Println("Your Augusta incentivized testnet address is: ", container.ID.AccountAddress)
 		fmt.Println("Amino encoded Public key is:", container.ID.PubKey)
 
