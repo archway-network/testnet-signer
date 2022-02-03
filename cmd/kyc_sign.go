@@ -42,6 +42,8 @@ var signIDCmd = &cobra.Command{
 			return err
 		}
 
+		fmt.Println("Please enter information as accurate as possible, information entered here must match your KYC")
+
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Printf("Please Enter your Full Legal Name:")
 		fullLegalName, err := reader.ReadString('\n')
@@ -66,7 +68,7 @@ var signIDCmd = &cobra.Command{
 			return fmt.Errorf("github handle need to be between 1 and 38 letter")
 		}
 
-		fmt.Printf("Please enter your email address (Use same email address, you would use in kyc form):")
+		fmt.Printf("Please enter your email address:")
 		emailAddress, err := reader.ReadString('\n')
 		if err != nil {
 			return err
