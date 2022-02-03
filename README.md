@@ -22,7 +22,7 @@ augusta-testnet-signer keys add <key-name>
 Generates a signed id message that we will need to submit in the form, after asking series of questions. Please make sure to fill the details correctly.
 
 ```shell
-% augusta-testnet-signer sign_id my-key --keyring-backend test
+% augusta-testnet-signer sign_id my-key
 Please enter information as accurate as possible, information entered here must match your KYC
 Please Enter your Full Legal Name:FirstName MiddleName LastName
 Please enter your github handle:mygithub
