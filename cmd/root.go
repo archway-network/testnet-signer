@@ -14,7 +14,7 @@ var rootCmd = &cobra.Command{Use: "archway-testnet-signer"}
 
 func init() {
 	rootCmd.PersistentFlags().String(cosmosFlag.FlagKeyringBackend, "os", "Keyring backend to use, default value is: os")
-	rootCmd.PersistentFlags().String(cosmosFlag.FlagKeyringDir, os.ExpandEnv("$HOME/")+".augusta", "Keyring backend directory")
+	rootCmd.PersistentFlags().String(cosmosFlag.FlagKeyringDir, os.ExpandEnv("$HOME/")+".archway", "Keyring backend directory")
 	rootCmd.PersistentFlags().String(cli.OutputFlag, "text", "Output format (text|json)")
 }
 

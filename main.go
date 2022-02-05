@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	Bech32Prefix = "augusta"
+	Bech32Prefix = "archway"
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
 	Bech32PrefixAccAddr = Bech32Prefix
 	// Bech32PrefixAccPub defines the Bech32 prefix of an account's public key
