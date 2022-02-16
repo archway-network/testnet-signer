@@ -2,6 +2,20 @@
 This utility enables anybody who wishes to participate in challenges involving sending tx on the testnet, generate a id json with signature
 that proves ownership of a key used to submit tx on blockchain.
 
+# Installation
+
+Go `1.16` is required.
+
+If you haven't already, download and install Go. See the official [go.dev documentation](https://golang.org/doc/install). Make sure your `GOBIN` and `GOPATH` are setup.
+
+## Get the source code & install
+
+```bash
+git clone git@github.com:archway-network/augusta-testnet-signer.git
+cd augusta-testnet-signer
+make install
+```
+
 # How it works? 
 
 ## Generate a key (Optional)
