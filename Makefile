@@ -55,8 +55,14 @@ build_tags_comma_sep := $(subst $(empty),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=augusta-testnet-signer \
+# ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=augusta-testnet-signer \
 		  -X github.com/cosmos/cosmos-sdk/version.AppName=augusta-testnet-signer \
+		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
+		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
+		  -X github.com/archway-network/augusta-testnet-signer/app.Bech32Prefix=archway \
+		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
+
+ldflags = -X github.com/cosmos/cosmos-sdk/version.AppName=augusta-testnet-signer \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X github.com/archway-network/augusta-testnet-signer/app.Bech32Prefix=archway \
@@ -68,6 +74,7 @@ endif
 ldflags += $(LDFLAGS)
 ldflags := $(strip $(ldflags))
 
+# BUILD_FLAGS := -tags "$(build_tags_comma_sep)" -ldflags '$(ldflags)' -trimpath
 BUILD_FLAGS := -tags "$(build_tags_comma_sep)" -ldflags '$(ldflags)' -trimpath
 
 # The below include contains the tools and runsim targets.
