@@ -50,7 +50,7 @@ Please submit json below the line in the form
     "full_legal_name": "FirstName MiddleName LastName",
     "github_handle": "mygithub",
     "email_address": "myemail@domain.com",
-    "account_address": "augusta1lf26gv87sxvkj59e3f9q2fh6q8phqwgje6g3xg",
+    "account_address": "archway1lf26gv87sxvkj59e3f9q2fh6q8phqwgje6g3xg",
     "pub_key": "61rphyEDtd8YCbk465UwocPsEcaSNn3IHx7zUa7tUdoAOuy/iyw="
   },
   "signature": "Fnsuzh71v9FJtaz6hdRWsKstGeE1mexEClq67OPuzaZdBKmurXo8P6Himu69mmEsCcz+YGtQV/204XSX0lmnMQ=="
