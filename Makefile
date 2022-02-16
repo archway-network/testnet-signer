@@ -59,7 +59,7 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=augusta-testnet-signer \
 		  -X github.com/cosmos/cosmos-sdk/version.AppName=augusta-testnet-signer \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-		  -X github.com/archway-network/archwayd/app.Bech32Prefix=archway \
+		  -X github.com/archway-network/augusta-testnet-signer/app.Bech32Prefix=augusta \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 
 ifeq ($(WITH_CLEVELDB),yes)
@@ -146,7 +146,7 @@ lint:
 format:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs goimports -w -local github.com/archway-network/archwayd
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs goimports -w -local github.com/archway-network/augusta-testnet-signer
 
 
 ###############################################################################
