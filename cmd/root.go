@@ -3,11 +3,12 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	cosmosFlag "github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/cli"
-	"os"
 )
 
 var rootCmd = &cobra.Command{Use: "archway-testnet-signer"}
