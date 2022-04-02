@@ -11,7 +11,7 @@ import (
 	"github.com/tendermint/tendermint/libs/cli"
 )
 
-var rootCmd = &cobra.Command{Use: "archway-testnet-signer"}
+var rootCmd = &cobra.Command{Use: "testnet-signer"}
 
 func init() {
 	rootCmd.PersistentFlags().String(cosmosFlag.FlagKeyringBackend, "os", "Keyring backend to use, default value is: os")

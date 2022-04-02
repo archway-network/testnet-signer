@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/archway-network/augusta-testnet-signer/cmd"
+	"github.com/archway-network/testnet-signer/cmd"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

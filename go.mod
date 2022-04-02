@@ -1,4 +1,4 @@
-module github.com/archway-network/augusta-testnet-signer
+module github.com/archway-network/testnet-signer
 
 go 1.17
 
