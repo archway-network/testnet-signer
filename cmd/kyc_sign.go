@@ -4,14 +4,15 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"github.com/archway-network/augusta-testnet-signer/types"
+	"net/mail"
+	"os"
+	"strings"
+
+	"github.com/archway-network/testnet-signer/types"
 	cosmosFlag "github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
-	"net/mail"
-	"os"
-	"strings"
 )
 
 var signIDCmd = &cobra.Command{

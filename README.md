@@ -11,8 +11,8 @@ If you haven't already, download and install Go. See the official [go.dev docume
 ## Get the source code and install
 
 ```bash
-git clone git@github.com:archway-network/augusta-testnet-signer.git
-cd augusta-testnet-signer
+git clone git@github.com:archway-network/testnet-signer.git
+cd testnet-signer
 make install
 ```
 
@@ -27,7 +27,7 @@ Adds a new key to the keystore. This command is compatible with the Cosmos SDK k
 
 ### Command
 ```shell
-augusta-testnet-signer keys add <key-name>
+testnet-signer keys add <key-name>
 ```
 
 ## Generate a signed JSON-formatted ID
@@ -36,7 +36,7 @@ augusta-testnet-signer keys add <key-name>
 Generates the required signed id message to submit in the testnet challenge form. Be sure to provide accurate details.
 
 ```shell
-% augusta-testnet-signer sign_id my-key
+% testnet-signer sign_id my-key
 Enter information as accurately as possible. Information entered here must match your KYC.
 Your full legal name:FirstName MiddleName LastName
 Your GitHub handle:mygithub
