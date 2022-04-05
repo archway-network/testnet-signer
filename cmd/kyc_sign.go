@@ -93,7 +93,7 @@ var signIDCmd = &cobra.Command{
 			return fmt.Errorf("signature verification failed. This may be due to bug in the program")
 		}
 
-		fmt.Println("Your Augusta incentivized testnet address is: ", container.ID.AccountAddress)
+		fmt.Println("Your incentivized testnet address is: ", container.ID.AccountAddress)
 		fmt.Println("Amino encoded Public key is:", container.ID.PubKey)
 
 		marshalledContainer, err := json.MarshalIndent(container, "", "  ")
