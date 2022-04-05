@@ -1,4 +1,4 @@
-# Augusta testnet signer utility
+# Testnet signer utility
 
 This utility generates a signed JSON-formatted ID to prove ownership of a key used to submit tx on the blockchain. This testnet signer utility is required for all users who participate in testnet challenges that involve sending tx on the testnet. The challenge submission requires the ID message be signed by the primary key used to deploy the smart contract.
 
