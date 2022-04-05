@@ -41,7 +41,7 @@ Enter information as accurately as possible. Information entered here must match
 Your full legal name:FirstName MiddleName LastName
 Your GitHub handle:mygithub
 Your email address:myemail@domain.com
-Your Augusta incentivized testnet address is:  archway1lf26gv87sxvkj59e3f9q2fh6q8phqwgje6g3xg
+Your incentivized testnet address is:  archway1lf26gv87sxvkj59e3f9q2fh6q8phqwgje6g3xg
 Amino encoded Public key is: 61rphyEDtd8YCbk465UwocPsEcaSNn3IHx7zUa7tUdoAOuy/iyw=
 Submit JSON below the line in the form.
 -----------------------------
