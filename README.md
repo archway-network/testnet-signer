@@ -11,7 +11,7 @@ If you haven't already, download and install Go. See the official [go.dev docume
 ## Get the source code and install
 
 ```bash
-git clone git@github.com:archway-network/testnet-signer.git
+git clone https://github.com/archway-network/testnet-signer
 cd testnet-signer
 make install
 ```
