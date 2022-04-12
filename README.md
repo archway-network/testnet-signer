@@ -29,6 +29,10 @@ Adds a new key to the keystore. This command is compatible with the Cosmos SDK k
 ```shell
 testnet-signer keys add <key-name>
 ```
+% If had a account, just to sign.
+```shell
+testnet-signer sign_id <key-name>
+```
 
 ## Generate a signed JSON-formatted ID
 
