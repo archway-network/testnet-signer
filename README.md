@@ -27,7 +27,7 @@ Adds a new key to the keystore. This command is compatible with the Cosmos SDK k
 
 ### Command
 ```shell
-testnet-signer keys add <key-name>
+testnet-signer keys add <key-name> [--keyring-dir  $HOMEDIR]
 ```
 
 ## Generate a signed JSON-formatted ID
