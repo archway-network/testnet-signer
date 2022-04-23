@@ -4,14 +4,14 @@ This utility generates a signed JSON-formatted ID to prove ownership of a key us
 
 # Installation
 
-Go `1.16` is required.
+Go `1.16+` is required.
 
 If you haven't already, download and install Go. See the official [go.dev documentation](https://golang.org/doc/install). Make sure your `GOBIN` and `GOPATH` are set correctly.
 
 ## Get the source code and install
 
 ```bash
-git clone git@github.com:archway-network/testnet-signer.git
+git clone https://github.com/archway-network/testnet-signer
 cd testnet-signer
 make install
 ```
